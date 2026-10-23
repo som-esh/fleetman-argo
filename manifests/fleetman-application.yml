@@ -12,6 +12,8 @@ spec:
       labels:
         app: position-simulator
     spec:
+      nodeSelector:
+        karpenter-node: "micro-spot"
       containers:
         - name: position-simulator
           image: richardchesterwood/istio-fleetman-position-simulator:6
@@ -35,6 +37,8 @@ spec:
       labels:
         app: position-tracker
     spec:
+      nodeSelector:
+        karpenter-node: "micro-spot"
       containers:
         - name: position-tracker
           image: richardchesterwood/istio-fleetman-position-tracker:6
@@ -58,6 +62,8 @@ spec:
       labels:
         app: api-gateway
     spec:
+      nodeSelector:
+        karpenter-node: "micro-spot"
       containers:
         - name: api-gateway
           image: richardchesterwood/istio-fleetman-api-gateway:6
@@ -81,6 +87,8 @@ spec:
       labels:
         app: webapp
     spec:
+      nodeSelector:
+        karpenter-node: "micro-spot"
       containers:
         - name: webapp
           image: richardchesterwood/istio-fleetman-webapp-angular:6
@@ -103,6 +111,8 @@ spec:
       labels:
         app: vehicle-telemetry
     spec:
+      nodeSelector:
+        karpenter-node: "micro-spot"
       containers:
         - name: vehicle-telemtry
           image: richardchesterwood/istio-fleetman-vehicle-telemetry:6
@@ -125,6 +135,8 @@ spec:
       labels:
         app: staff-service
     spec:
+      nodeSelector:
+        karpenter-node: "micro-spot"
       containers:
         - name: staff-service
           image: richardchesterwood/istio-fleetman-staff-service:6
@@ -148,8 +160,13 @@ spec:
   ports:
     - name: http
       port: 80
-      nodePort: 30080
-  type: NodePort
+      targetPort: 8080
+  type: ClusterIP
+  # ports:
+  #   - name: http
+  #     port: 80
+  #     nodePort: 30080
+  # type: NodePort
 ---
 apiVersion: v1
 kind: Service
