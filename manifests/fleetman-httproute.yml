@@ -12,6 +12,12 @@ spec:
         - path:
             type: PathPrefix
             value: /fleetman
+      filters:
+        - type: URLRewrite
+          urlRewrite:
+            path:
+              type: ReplacePrefixMatch
+              replacePrefixMatch: /
       backendRefs:
         - name: fleetman-webapp
           port: 80
