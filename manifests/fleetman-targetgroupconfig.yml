@@ -1,0 +1,13 @@
+apiVersion: gateway.k8s.aws/v1
+kind: TargetGroupConfiguration
+metadata:
+  name: fleetman-webapp-targets
+  namespace: default
+spec:
+  targetReference:
+    group: ""
+    kind: Service
+    name: fleetman-webapp
+  defaultConfiguration:
+    targetType: ip
+    protocol: HTTP
