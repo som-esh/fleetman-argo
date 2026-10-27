@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/som-esh/fleetman-agro.git
+    repoURL: https://github.com/som-esh/fleetman-argo
     targetRevision: main
     path: manifests
     directory:
